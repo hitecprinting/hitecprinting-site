@@ -232,3 +232,40 @@ $(document).ready(function () {
   document.getElementById('preloader')?.addEventListener('click', finishImmediately);
 })();
 
+
+
+// === GA4 Custom Event Tracking for Clicks ===
+(function () {
+    function trackClick(selector, eventName) {
+        document.querySelectorAll(selector).forEach(el => {
+            el.addEventListener('click', () => {
+                if (typeof gtag === 'function') {
+                    gtag('event', eventName, {
+                        event_category: 'engagement',
+                        event_label: el.textContent || el.href || eventName
+                    });
+                    console.log('GA4 Event:', eventName, '->', el);
+                }
+            });
+        });
+    }
+
+    // Track phone number clicks
+    trackClick("a[href^='tel:']", "phone_click");
+
+    // Track email clicks
+    trackClick("a[href^='mailto:']", "email_click");
+
+    // Track WhatsApp clicks (assuming WhatsApp links contain wa.me or api.whatsapp.com)
+    trackClick("a[href*='wa.me'], a[href*='api.whatsapp.com']", "whatsapp_click");
+
+    // Track Facebook clicks
+    trackClick("a[href*='facebook.com']", "facebook_click");
+
+    // Track Instagram clicks
+    trackClick("a[href*='instagram.com']", "instagram_click");
+    
+    // Track Reviews clicks automatically (links containing "g.page" or "review")
+    trackClick("a[href*='g.page'], a[href*='review']", "reviews_click");    
+
+})();

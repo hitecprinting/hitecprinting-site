@@ -461,6 +461,15 @@ nav ul li a:hover {
   color: #fcb900;
 }
 
+/* Small screens (mobile phones) */
+@media (max-width: 768px) {
+  .services-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 15px;
+  }
+}
+
+
 /* Gallery */
 .gallery .owl-carousel img {
   border-radius: 8px;
@@ -590,7 +599,8 @@ nav ul li a:hover {
 }
 
 .portfolio-carousel .owl-dot.active {
-  background-color: #fcb900 !important;
+  /* background-color: #fcb900 !important; */
+  background-color: #ffffff !important;
 }
 
 
