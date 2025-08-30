@@ -7,11 +7,11 @@
 
 /* ---------- Page loader (printing paper intro) ---------- */
 :root {
-  --loader-bg: #0b1220; 
-  --paper-shadow: rgba(0,0,0,0.18);
+  --loader-bg: #0b1220;
+  --paper-shadow: rgba(0, 0, 0, 0.18);
   --paper-radius: 8px;
   --printer-color: #222;
-  --accent: #FF3F96; 
+  --accent: #FF3F96;
 }
 
 /* Ensure loader sits above everything */
@@ -44,11 +44,11 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  background: #000;             
-  border: 3px solid #ffffff;    
-  border-radius: 10px;        
+  background: #000;
+  border: 3px solid #ffffff;
+  border-radius: 10px;
   box-sizing: border-box;
-  box-shadow: 0 0 50px rgba(255,255,255,0.3);
+  box-shadow: 0 0 50px rgba(255, 255, 255, 0.3);
   position: relative;
 }
 
@@ -57,32 +57,34 @@
   height: 27px;
   background: linear-gradient(180deg, #3a3a3a, #212121);
   border-radius: 6px 6px 3px 3px;
-  box-shadow: 0 6px 18px rgba(0,0,0,0.35);
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.35);
 }
+
 .printer-body {
   width: 180px;
-  height: 90px; 
-  background: linear-gradient(180deg,#2b2b2b,#141414);
+  height: 90px;
+  background: linear-gradient(180deg, #2b2b2b, #141414);
   border-radius: 6px;
   margin-top: -6px;
   position: relative;
-  box-shadow: 0 10px 25px rgba(0,0,0,0.35);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.35);
 }
+
 .printer-slot {
   position: absolute;
   top: 24px;
   left: 15px;
   right: 15px;
   height: 24px;
-  background: linear-gradient(90deg,#111,#333);
+  background: linear-gradient(90deg, #111, #333);
   border-radius: 4px;
-  box-shadow: inset 0 2px 0 rgba(255,255,255,0.03);
+  box-shadow: inset 0 2px 0 rgba(255, 255, 255, 0.03);
 }
 
 /* Paper (initially hidden inside printer slot) */
 .paper {
-  position: absolute;           
-  top: 16px;                    
+  position: absolute;
+  top: 16px;
   left: 50%;
   transform: translate(-50%, 0) scale(0.9);
   width: 160px;
@@ -97,7 +99,7 @@
 .paper-svg {
   width: 100%;
   height: 100%;
-  display:block;
+  display: block;
 }
 
 /* Animation sequence states */
@@ -107,22 +109,37 @@
 }
 
 @keyframes paper-feed {
-  0%   { transform: translate(-50%, -60%) scale(0.9); opacity: 0; }
-  10%  { opacity: 1; }
-  40%  { transform: translate(-50%, 40%) scale(1); }
-  70%  { transform: translate(-50%, 100%) scale(1.01); }
-  100% { transform: translate(-50%, 120%) scale(1.01); }
+  0% {
+    transform: translate(-50%, -60%) scale(0.9);
+    opacity: 0;
+  }
+
+  10% {
+    opacity: 1;
+  }
+
+  40% {
+    transform: translate(-50%, 40%) scale(1);
+  }
+
+  70% {
+    transform: translate(-50%, 100%) scale(1.01);
+  }
+
+  100% {
+    transform: translate(-50%, 120%) scale(1.01);
+  }
 }
 
 /* small printer-head glint to simulate printing (pseudo) */
-.printer-body::after{
+.printer-body::after {
   content: "";
   position: absolute;
   top: 46px;
   left: 18px;
   width: 84px;
   height: 6px;
-  background: linear-gradient(90deg, rgba(255,255,255,0.02), rgba(255,255,255,0.08), rgba(255,255,255,0.02));
+  background: linear-gradient(90deg, rgba(255, 255, 255, 0.02), rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0.02));
   border-radius: 2px;
   opacity: 0;
 }
@@ -131,11 +148,27 @@
 .printer-body.printing::after {
   animation: head-scan 900ms linear forwards;
 }
+
 @keyframes head-scan {
-  0%   { opacity: 0; transform: translateX(-44px); }
-  30%  { opacity: .9; transform: translateX(44px); }
-  70%  { opacity: .9; transform: translateX(-20px); }
-  100% { opacity: 0; transform: translateX(0); }
+  0% {
+    opacity: 0;
+    transform: translateX(-44px);
+  }
+
+  30% {
+    opacity: .9;
+    transform: translateX(44px);
+  }
+
+  70% {
+    opacity: .9;
+    transform: translateX(-20px);
+  }
+
+  100% {
+    opacity: 0;
+    transform: translateX(0);
+  }
 }
 
 /* Expand-paper-to-screen state (paper becomes the site) */
@@ -152,10 +185,75 @@
   z-index: 100000;
 }
 
+.paper.expand .paper-lines {
+  display: none;
+}
+
+
+#expand-image {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  max-width: 60%;
+  max-height: 60%;
+  opacity: 0;
+  transition: opacity 500ms ease;
+}
+
+.paper.expand #expand-image {
+  opacity: 1;
+  /* fade in when paper expands */
+}
+
+#expand-text {
+  position: absolute;
+  top: 75%;
+  /* pushes text below the logo */
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 1.8rem;
+  font-weight: 600;
+  color: #222;
+  opacity: 0;
+  transition: opacity 500ms ease;
+  text-align: center;
+  font-family: 'Poppins', sans-serif;
+  /* or your brand font */
+}
+
+.paper.expand #expand-text {
+  opacity: 1;
+  /* fade in when paper expands */
+}
+
+/* Mobile adjustment */
+@media (max-width: 600px) {
+  #expand-text {
+    top: 66%;
+    /* pull text up a bit */
+    font-size: 1.0rem;
+    /* smaller font for small screens */
+  }
+}
+
 @keyframes expand-to-screen {
-  0%   { transform: translate(-50%, -45%) scale(1.03); opacity: 1; border-radius: 10px; }
-  40%  { transform: translate(-50%, -50%) scale(1.08); border-radius: 6px; }
-  100% { transform: translate(-50%, -50%) scale(1); border-radius: 0; opacity: 1; }
+  0% {
+    transform: translate(-50%, -45%) scale(1.03);
+    opacity: 1;
+    border-radius: 10px;
+  }
+
+  40% {
+    transform: translate(-50%, -50%) scale(1.08);
+    border-radius: 6px;
+  }
+
+  100% {
+    transform: translate(-50%, -50%) scale(1);
+    border-radius: 0;
+    opacity: 1;
+  }
 }
 
 /* Fade loader out */
@@ -167,19 +265,43 @@
 
 /* Respect reduced-motion */
 @media (prefers-reduced-motion: reduce) {
+
   .paper.printing,
   .printer-body.printing,
   .paper.expand,
-  #preloader { animation: none !important; transition: none !important; opacity: 0 !important; visibility: hidden !important; }
+  #preloader {
+    animation: none !important;
+    transition: none !important;
+    opacity: 0 !important;
+    visibility: hidden !important;
+  }
 }
 
 /* smaller screens adjustments */
 @media (max-width: 600px) {
-  .printer-wrap { gap: 15px; }
-  .printer { width: 135px; height: 102px; }
-  .printer-top { width: 135px; height: 21px; }
-  .printer-body { width: 135px; height: 75px; }
-  .paper { width: 120px; height: 180px; }
+  .printer-wrap {
+    gap: 15px;
+  }
+
+  .printer {
+    width: 135px;
+    height: 102px;
+  }
+
+  .printer-top {
+    width: 135px;
+    height: 21px;
+  }
+
+  .printer-body {
+    width: 135px;
+    height: 75px;
+  }
+
+  .paper {
+    width: 120px;
+    height: 180px;
+  }
 }
 
 
@@ -368,8 +490,10 @@ nav ul li a:hover {
 
 /* Hero title default state */
 .hero-title {
-  opacity: 0;            /* hidden initially */
-  transform: translateX(-50px); /* slight offset for effect */
+  opacity: 0;
+  /* hidden initially */
+  transform: translateX(-50px);
+  /* slight offset for effect */
 }
 
 /* Triggered after preloader finishes */
@@ -566,16 +690,20 @@ nav ul li a:hover {
   background: rgba(0, 0, 0, 0.6);
   color: #fff;
   border: none;
-  width: 30px;       /* circle size */
-  height: 30px;      /* circle size */
+  width: 30px;
+  /* circle size */
+  height: 30px;
+  /* circle size */
   border-radius: 50%;
-  font-size: 14px;   /* arrow size */
+  font-size: 14px;
+  /* arrow size */
   cursor: pointer;
   z-index: 10;
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 0;        /* remove extra padding */
+  padding: 0;
+  /* remove extra padding */
 }
 
 
@@ -890,4 +1018,3 @@ nav ul li a:focus-visible::after {
     opacity: 1;
   }
 }
-

@@ -170,66 +170,70 @@ $(document).ready(function () {
 
 /* Page intro loader: paper printing -> expand -> reveal site */
 (function () {
-  const preloader = document.getElementById('preloader');
-  const paper = document.getElementById('loader-paper');
-  const printerBody = document.querySelector('.printer-body');
-  const heroTitle = document.querySelector('.hero-title'); // ✅ grab hero title
+    const preloader = document.getElementById('preloader');
+    const paper = document.getElementById('loader-paper');
+    const printerBody = document.querySelector('.printer-body');
+    const heroTitle = document.querySelector('.hero-title'); // ✅ grab hero title
 
-  // Start sequence after window load (so images/fonts are ready).
-  window.addEventListener('load', () => {
-    // small delay so user perceives "arrival"
-    setTimeout(startPrintSequence, 200); 
-  });
+    // Start sequence after window load (so images/fonts are ready).
+    window.addEventListener('load', () => {
+        // small delay so user perceives "arrival"
+        setTimeout(startPrintSequence, 200);
+    });
 
-  function startPrintSequence() {
-    if (!paper || !preloader) return finishImmediately();
+    function startPrintSequence() {
+        if (!paper || !preloader) return finishImmediately();
 
-    // Step 1: trigger "printing" (paper slides out)
-    paper.classList.add('printing');
-    printerBody && printerBody.classList.add('printing');
+        // Step 1: trigger "printing" (paper slides out)
+        paper.classList.add('printing');
+        printerBody && printerBody.classList.add('printing');
 
-    // after paper is out, pause shortly then expand to reveal
-    setTimeout(() => {
-      // Step 2: expand paper to fill screen
-      paper.classList.remove('printing');
-      printerBody && printerBody.classList.remove('printing');
+        // after paper is out, pause shortly then expand to reveal
+        setTimeout(() => {
+            // Step 2: expand paper to fill screen
+            paper.classList.remove('printing');
+            printerBody && printerBody.classList.remove('printing');
 
-      // move paper to absolute layer and expand
-      paper.classList.add('expand');
+            // move paper to absolute layer and expand
+            paper.classList.add('expand');
 
-      // ✅ wait for expand animation to finish
-      paper.addEventListener('animationend', onExpandDone, { once: true });
-    }, 2000); // matches paper "printing" animation
-  }
+            // ✅ show image when expand starts
+            const expandImage = document.getElementById('expand-image');
+            if (expandImage) expandImage.style.opacity = "1";
 
-  function onExpandDone() {
-    // Fade out preloader
-    preloader.classList.add('hidden');
+            // ✅ wait for expand animation to finish
+            paper.addEventListener('animationend', onExpandDone, { once: true });
+        }, 2000); // matches paper "printing" animation
+    }
 
-    // ✅ Trigger hero title animation
-    heroTitle && heroTitle.classList.add('animate-in');
+    function onExpandDone() {
+        // Fade out preloader
+        preloader.classList.add('hidden');
 
-    // Optional: completely remove node from DOM after transition for performance
-    setTimeout(() => {
-      try {
-        preloader.parentNode && preloader.parentNode.removeChild(preloader);
-      } catch (e) {}
-    }, 600);
-  }
+        // ✅ Trigger hero title animation
+        heroTitle && heroTitle.classList.add('animate-in');
 
-  function finishImmediately() {
-    // In case something goes wrong, remove preloader
-    preloader && preloader.classList.add('hidden');
-    heroTitle && heroTitle.classList.add('animate-in'); // ✅ still show hero
-    setTimeout(() => {
-      try {
-        preloader && preloader.parentNode && preloader.parentNode.removeChild(preloader);
-      } catch (e) {}
-    }, 400);
-  }
+        // Optional: completely remove node from DOM after transition for performance
+        setTimeout(() => {
+            try {
+                preloader.parentNode && preloader.parentNode.removeChild(preloader);
+            } catch (e) { }
+        }, 600);
+    }
 
-  // If user clicks anywhere on loader, skip animation and reveal instantly
-  document.getElementById('preloader')?.addEventListener('click', finishImmediately);
+    function finishImmediately() {
+        // In case something goes wrong, remove preloader
+        preloader && preloader.classList.add('hidden');
+        heroTitle && heroTitle.classList.add('animate-in'); // ✅ still show hero
+        setTimeout(() => {
+            try {
+                preloader && preloader.parentNode && preloader.parentNode.removeChild(preloader);
+            } catch (e) { }
+        }, 400);
+    }
+
+    // If user clicks anywhere on loader, skip animation and reveal instantly
+    document.getElementById('preloader')?.addEventListener('click', finishImmediately);
 })();
 
 
@@ -264,8 +268,8 @@ $(document).ready(function () {
 
     // Track Instagram clicks
     trackClick("a[href*='instagram.com']", "instagram_click");
-    
+
     // Track Reviews clicks automatically (links containing "g.page" or "review")
-    trackClick("a[href*='g.page'], a[href*='review']", "reviews_click");    
+    trackClick("a[href*='g.page'], a[href*='review']", "reviews_click");
 
 })();
