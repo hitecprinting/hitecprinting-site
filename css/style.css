@@ -469,9 +469,9 @@ nav ul li a:hover {
 }
 
 
-/* .portfolio {
-  background: #ffde70;
-} */
+.portfolio {
+  background: linear-gradient(to right, rgb(255, 172, 48), #fc0);
+}
 
 
 /* Portfolio Card */
