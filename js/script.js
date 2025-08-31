@@ -31,7 +31,19 @@ $(document).ready(function () {
         owl.trigger('prev.owl.carousel');
     });
 
+     $(".portfolio-card").on("click", function (e) {
+        // if already tapped, remove class (toggle off)
+        if ($(this).hasClass("tapped")) {
+            $(this).removeClass("tapped");
+        } else {
+            // remove tapped from others so only one open at a time
+            $(".portfolio-card").removeClass("tapped");
+            $(this).addClass("tapped");
+        }
 
+        // prevent double tap triggering links immediately
+        e.preventDefault();
+    });
 
     // === NEW: Owl Carousel for Testimonials ===
     $(".testimonials-carousel").owlCarousel({
@@ -48,8 +60,6 @@ $(document).ready(function () {
             768: { items: 3 }
         }
     });
-
-
 
     // === Original: Smooth scroll to section ===
     $("nav a[href^='#']").on('click', function (e) {

@@ -650,7 +650,8 @@ nav ul li a:hover {
   padding: 15px;
 }
 
-.portfolio-card:hover .overlay {
+.portfolio-card:hover .overlay,
+.portfolio-card.tapped .overlay {
   opacity: 1;
 }
 
@@ -668,20 +669,6 @@ nav ul li a:hover {
   color: #ffffff;
 }
 
-
-/* .portfolio-prev,
-.portfolio-next {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  background: rgba(0, 0, 0, 0.6);
-  color: #fff;
-  border: none;
-  padding: 10px 15px;
-  border-radius: 50%;
-  cursor: pointer;
-  z-index: 10;
-} */
 .portfolio-prev,
 .portfolio-next {
   position: absolute;
@@ -691,19 +678,15 @@ nav ul li a:hover {
   color: #fff;
   border: none;
   width: 30px;
-  /* circle size */
   height: 30px;
-  /* circle size */
   border-radius: 50%;
   font-size: 14px;
-  /* arrow size */
   cursor: pointer;
   z-index: 10;
   display: flex;
   align-items: center;
   justify-content: center;
   padding: 0;
-  /* remove extra padding */
 }
 
 
@@ -747,7 +730,6 @@ nav ul li a:hover {
 }
 
 .portfolio-carousel .owl-dot.active {
-  /* background-color: #fcb900 !important; */
   background-color: #ffffff !important;
 }
 
