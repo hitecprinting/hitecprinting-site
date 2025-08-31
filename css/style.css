@@ -1000,3 +1000,31 @@ nav ul li a:focus-visible::after {
     opacity: 1;
   }
 }
+
+/* Floating WhatsApp Button */
+.whatsapp-float {
+  position: fixed;
+  width: 55px;
+  height: 55px;
+  bottom: 20px;
+  right: 20px;
+  background-color: #25D366;
+  color: #fff;
+  border-radius: 50%;
+  text-align: center;
+  font-size: 28px;
+  box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.3);
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  text-decoration: none;   /* 🚀 remove underline */
+}
+
+.whatsapp-float:hover {
+  transform: scale(1.1);
+  box-shadow: 2px 4px 12px rgba(0, 0, 0, 0.4);
+  color: #fff;
+  text-decoration: none;   /* 🚀 ensure no underline on hover too */
+}
