@@ -31,19 +31,11 @@ $(document).ready(function () {
         owl.trigger('prev.owl.carousel');
     });
 
-     $(".portfolio-card").on("click", function (e) {
-        // if already tapped, remove class (toggle off)
-        if ($(this).hasClass("tapped")) {
-            $(this).removeClass("tapped");
-        } else {
-            // remove tapped from others so only one open at a time
-            $(".portfolio-card").removeClass("tapped");
-            $(this).addClass("tapped");
-        }
+    $(".portfolio-card").on("click", function (e) {
+    $(this).toggleClass("tapped");
+    e.preventDefault();
+});
 
-        // prevent double tap triggering links immediately
-        e.preventDefault();
-    });
 
     // === NEW: Owl Carousel for Testimonials ===
     $(".testimonials-carousel").owlCarousel({
