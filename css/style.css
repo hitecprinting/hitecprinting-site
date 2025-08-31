@@ -181,7 +181,7 @@
   transform: translate(-50%, -50%) scale(1);
   border-radius: 0;
   box-shadow: none;
-  animation: expand-to-screen 700ms ease-in forwards;
+  animation: expand-to-screen 1800ms ease-in forwards;
   z-index: 100000;
 }
 
