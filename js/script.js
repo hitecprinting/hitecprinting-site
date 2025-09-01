@@ -32,9 +32,9 @@ $(document).ready(function () {
     });
 
     $(".portfolio-card").on("click", function (e) {
-    $(this).toggleClass("tapped");
-    e.preventDefault();
-});
+        $(this).toggleClass("tapped");
+        e.preventDefault();
+    });
 
 
     // === NEW: Owl Carousel for Testimonials ===
@@ -273,5 +273,9 @@ $(document).ready(function () {
 
     // Track Reviews clicks automatically (links containing "g.page" or "review")
     trackClick("a[href*='g.page'], a[href*='review']", "reviews_click");
+
+    // Track Floating WhatsApp Button separately
+    trackClick(".whatsapp-float", "whatsapp_float_click");
+
 
 })();
