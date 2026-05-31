@@ -1907,6 +1907,327 @@
       background: var(--accent2);
     }
 
+    /* ── SERVICE GALLERY MODAL ── */
+    #svcModal {
+      display: none;
+      position: fixed;
+      inset: 0;
+      z-index: 99997;
+      background: rgba(0, 0, 0, 0.85);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+    }
+
+    #svcModal.open {
+      display: flex;
+    }
+
+    .svc-modal-box {
+      background: var(--ink2);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 16px;
+      width: 100%;
+      max-width: 900px;
+      max-height: 90vh;
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+      position: relative;
+      animation: modalIn 0.35s var(--ease-out);
+    }
+
+    @keyframes modalIn {
+      from {
+        opacity: 0;
+        transform: scale(0.93) translateY(20px);
+      }
+
+      to {
+        opacity: 1;
+        transform: scale(1) translateY(0);
+      }
+    }
+
+    .svc-modal-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1.25rem 1.75rem;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+      flex-shrink: 0;
+    }
+
+    .svc-modal-title {
+      font-family: var(--ff-serif);
+      font-size: 1.4rem;
+      font-weight: 900;
+      color: #fff;
+      letter-spacing: -0.02em;
+    }
+
+    .svc-modal-title em {
+      color: var(--accent);
+      font-style: normal;
+    }
+
+    .svc-modal-close {
+      width: 38px;
+      height: 38px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.07);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      color: rgba(255, 255, 255, 0.7);
+      font-size: 1rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: all 0.2s;
+      flex-shrink: 0;
+    }
+
+    .svc-modal-close:hover {
+      background: var(--accent);
+      border-color: var(--accent);
+      color: #fff;
+    }
+
+    .svc-modal-body {
+      overflow-y: auto;
+      padding: 1.5rem 1.75rem;
+      flex: 1;
+    }
+
+    /* Grid */
+    .svc-img-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+      gap: 16px;
+    }
+
+    /* Thumbnail Card */
+    .svc-img-thumb {
+      aspect-ratio: 4 / 5;
+      border-radius: 14px;
+      overflow: hidden;
+      cursor: pointer;
+
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      background: #111;
+
+      box-shadow: 0 10px 30px rgba(0, 0, 0, .25);
+
+      transition:
+        border-color 0.25s,
+        transform 0.35s var(--ease-out),
+        box-shadow 0.35s var(--ease-out);
+    }
+
+    .svc-img-thumb:hover {
+      border-color: var(--accent);
+      transform: translateY(-4px);
+      box-shadow: 0 18px 45px rgba(230, 59, 31, 0.25);
+    }
+
+    .svc-img-thumb img {
+      width: 100%;
+      height: 100%;
+      display: block;
+
+      object-fit: contain;
+
+      transition: transform 0.45s var(--ease-out);
+    }
+
+    .svc-img-thumb:hover img {
+      transform: scale(1.03);
+    }
+
+    /* Coming Soon */
+    .svc-coming-soon {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 1rem;
+      padding: 4rem 2rem;
+      text-align: center;
+    }
+
+    .svc-coming-soon i {
+      font-size: 2.8rem;
+      color: var(--gold);
+      opacity: 0.7;
+    }
+
+    .svc-coming-soon h3 {
+      font-family: var(--ff-serif);
+      font-size: 1.4rem;
+      font-weight: 900;
+      color: #fff;
+    }
+
+    .svc-coming-soon p {
+      font-size: 0.9rem;
+      color: rgba(255, 255, 255, 0.4);
+      max-width: 280px;
+      line-height: 1.6;
+    }
+
+    /* Lightbox */
+    #svcLightbox {
+      display: none;
+      position: fixed;
+      inset: 0;
+      z-index: 99999;
+      background: rgba(0, 0, 0, 0.95);
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+    }
+
+    #svcLightbox.open {
+      display: flex;
+    }
+
+    .lb-img-wrap {
+      position: relative;
+      max-width: 88vw;
+      max-height: 78vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    #lbImg {
+      max-width: 88vw;
+      max-height: 78vh;
+      object-fit: contain;
+      border-radius: 8px;
+      box-shadow: 0 24px 80px rgba(0, 0, 0, 0.6);
+      animation: lbIn 0.3s var(--ease-out);
+    }
+
+    @keyframes lbIn {
+      from {
+        opacity: 0;
+        transform: scale(0.94);
+      }
+
+      to {
+        opacity: 1;
+        transform: scale(1);
+      }
+    }
+
+    .lb-counter {
+      font-family: var(--ff-mono);
+      font-size: 0.75rem;
+      letter-spacing: 0.15em;
+      color: rgba(255, 255, 255, 0.4);
+      margin-top: 1rem;
+      text-transform: uppercase;
+    }
+
+    .lb-close {
+      position: fixed;
+      top: 20px;
+      right: 24px;
+      width: 42px;
+      height: 42px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      color: #fff;
+      font-size: 1rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: background 0.2s;
+      z-index: 100000;
+    }
+
+    .lb-close:hover {
+      background: var(--accent);
+      border-color: var(--accent);
+    }
+
+    .lb-arrow {
+      position: fixed;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      color: #fff;
+      font-size: 1.1rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: all 0.2s;
+      z-index: 100000;
+    }
+
+    .lb-arrow:hover {
+      background: var(--accent);
+      border-color: var(--accent);
+      transform: translateY(-50%) scale(1.08);
+    }
+
+    .lb-prev {
+      left: 20px;
+    }
+
+    .lb-next {
+      right: 20px;
+    }
+
+    /* Mobile */
+    @media (max-width: 600px) {
+      .svc-modal-box {
+        max-height: 95vh;
+        border-radius: 12px;
+      }
+
+      .svc-modal-header {
+        padding: 1rem 1.25rem;
+      }
+
+      .svc-modal-body {
+        padding: 1rem 1.25rem;
+      }
+
+      .svc-img-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 10px;
+      }
+
+      .svc-img-thumb {
+        border-radius: 10px;
+      }
+
+      .lb-arrow {
+        width: 38px;
+        height: 38px;
+        font-size: 0.9rem;
+      }
+
+      .lb-prev {
+        left: 8px;
+      }
+
+      .lb-next {
+        right: 8px;
+      }
+    }
+
     /* ── WHATSAPP FLOAT ── */
     .wa-float {
       position: fixed;
@@ -2204,7 +2525,7 @@
     </div>
     <div class="services-grid reveal" id="servicesGrid">
       <div class="svc-item" data-cat="cards">
-        <div class="svc-icon">💌</div>
+        <div class="svc-icon">💍</div>
         <div class="svc-name">Wedding Cards</div>
       </div>
       <div class="svc-item" data-cat="cards">
@@ -2224,11 +2545,15 @@
         <div class="svc-name">Birthday Cards</div>
       </div>
       <div class="svc-item" data-cat="cards">
-        <div class="svc-icon">📮</div>
+        <div class="svc-icon">🏷️</div>
+        <div class="svc-name">Tent Cards</div>
+      </div>
+      <div class="svc-item" data-cat="cards">
+        <div class="svc-icon">📬</div>
         <div class="svc-name">Postcards</div>
       </div>
       <div class="svc-item" data-cat="print">
-        <div class="svc-icon">📋</div>
+        <div class="svc-icon">📑</div>
         <div class="svc-name">Brochures</div>
       </div>
       <div class="svc-item" data-cat="print">
@@ -2244,7 +2569,7 @@
         <div class="svc-name">Books</div>
       </div>
       <div class="svc-item" data-cat="print">
-        <div class="svc-icon">📓</div>
+        <div class="svc-icon">📘</div>
         <div class="svc-name">Booklets</div>
       </div>
       <div class="svc-item" data-cat="print">
@@ -2252,7 +2577,7 @@
         <div class="svc-name">Magazines</div>
       </div>
       <div class="svc-item" data-cat="print">
-        <div class="svc-icon">📑</div>
+        <div class="svc-icon">📚</div>
         <div class="svc-name">Catalogs</div>
       </div>
       <div class="svc-item" data-cat="print">
@@ -2264,7 +2589,7 @@
         <div class="svc-name">Leaflets</div>
       </div>
       <div class="svc-item" data-cat="print">
-        <div class="svc-icon">🗓️</div>
+        <div class="svc-icon">📅</div>
         <div class="svc-name">Calendars</div>
       </div>
       <div class="svc-item" data-cat="print">
@@ -2272,11 +2597,11 @@
         <div class="svc-name">Diaries</div>
       </div>
       <div class="svc-item" data-cat="print">
-        <div class="svc-icon">🖨️</div>
+        <div class="svc-icon">📠</div>
         <div class="svc-name">Color Xerox</div>
       </div>
       <div class="svc-item" data-cat="print">
-        <div class="svc-icon">🖌️</div>
+        <div class="svc-icon">🖨️</div>
         <div class="svc-name">Color Prints</div>
       </div>
       <div class="svc-item" data-cat="print">
@@ -2284,7 +2609,7 @@
         <div class="svc-name">Color Designing</div>
       </div>
       <div class="svc-item" data-cat="signage">
-        <div class="svc-icon">🏁</div>
+        <div class="svc-icon">🚩</div>
         <div class="svc-name">Banners</div>
       </div>
       <div class="svc-item" data-cat="signage">
@@ -2292,15 +2617,15 @@
         <div class="svc-name">Flex / Vinyl</div>
       </div>
       <div class="svc-item" data-cat="signage">
-        <div class="svc-icon">🏛️</div>
-        <div class="svc-name">Standy</div>
+        <div class="svc-icon">🖼️</div>
+        <div class="svc-name">Standee</div>
       </div>
       <div class="svc-item" data-cat="signage">
         <div class="svc-icon">🎏</div>
         <div class="svc-name">Danglers</div>
       </div>
       <div class="svc-item" data-cat="signage">
-        <div class="svc-icon">🎴</div>
+        <div class="svc-icon">🔖</div>
         <div class="svc-name">Stickers</div>
       </div>
       <div class="svc-item" data-cat="signage">
@@ -2615,6 +2940,31 @@
     </div>
   </section>
 
+  <!-- SERVICE GALLERY MODAL -->
+  <div id="svcModal" role="dialog" aria-modal="true" aria-labelledby="svcModalTitle">
+    <div class="svc-modal-box">
+      <div class="svc-modal-header">
+        <div class="svc-modal-title" id="svcModalTitle">Our <em id="svcModalName">Work</em></div>
+        <button class="svc-modal-close" id="svcModalClose" aria-label="Close"><i class="fas fa-times"></i></button>
+      </div>
+      <div class="svc-modal-body" id="svcModalBody">
+        <!-- Images injected by JS -->
+      </div>
+    </div>
+  </div>
+
+  <!-- LIGHTBOX -->
+  <div id="svcLightbox" role="dialog" aria-modal="true" aria-label="Image viewer">
+    <button class="lb-close" id="lbClose" aria-label="Close lightbox"><i class="fas fa-times"></i></button>
+    <button class="lb-arrow lb-prev" id="lbPrev" aria-label="Previous image"><i
+        class="fas fa-chevron-left"></i></button>
+    <div class="lb-img-wrap">
+      <img id="lbImg" src="" alt="Print sample">
+    </div>
+    <div class="lb-counter" id="lbCounter">1 / 1</div>
+    <button class="lb-arrow lb-next" id="lbNext" aria-label="Next image"><i class="fas fa-chevron-right"></i></button>
+  </div>
+
   <div id="popup">
     <div class="popup-content">
       <p id="popup-message"></p><button id="popup-close">OK</button>
@@ -2626,8 +2976,7 @@
     <div class="footer-inner">
       <div>
         <div class="footer-logo">HI-TEC</div>
-        <div class="footer-copy">© 2025 HI-TEC Printing Solutions. All rights reserved.<br>Made with ❤️ in <a
-            href="https://hitecprinting.in">Vijayawada</a></div>
+        <div class="footer-copy">© 2025 HI-TEC Printing Solutions. All rights reserved.</div>
       </div>
       <div class="social-row">
         <a class="soc-link" href="https://www.facebook.com/HitecPrintingSolutions" target="_blank"
@@ -2650,6 +2999,197 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
   <script>
+    // ── SERVICE GALLERY ──
+    (function () {
+
+      // Config
+      const MAX_IMAGES = 10;
+      const IMG_BASE = 'images/services/';
+      const EXT = '.webp';
+
+      // Helpers
+      function slugify(name) {
+        return name.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
+      }
+
+      function imgPath(slug, n) {
+        return IMG_BASE + slug + '/' + n + EXT;
+      }
+
+      // Elements
+      const modal = document.getElementById('svcModal');
+      const modalName = document.getElementById('svcModalName');
+      const modalBody = document.getElementById('svcModalBody');
+      const modalClose = document.getElementById('svcModalClose');
+      const lightbox = document.getElementById('svcLightbox');
+      const lbImg = document.getElementById('lbImg');
+      const lbCounter = document.getElementById('lbCounter');
+      const lbClose = document.getElementById('lbClose');
+      const lbPrev = document.getElementById('lbPrev');
+      const lbNext = document.getElementById('lbNext');
+
+      let currentImages = [];
+      let currentIndex = 0;
+
+      // ── OPEN MODAL ──
+      function openModal(cardEl) {
+        const name = cardEl.querySelector('.svc-name').textContent.trim();
+        const slug = slugify(name);
+
+        modalName.textContent = name;
+        modalBody.innerHTML = '<div style="color:rgba(255,255,255,0.3);text-align:center;padding:3rem;font-family:var(--ff-mono);font-size:0.75rem;letter-spacing:0.1em;">LOADING...</div>';
+        modal.classList.add('open');
+        document.body.style.overflow = 'hidden';
+
+        loadImages(slug, name);
+      }
+
+      // ── LOAD IMAGES ──
+      // Probes each numbered image (1.webp, 2.webp …) and collects the ones that exist
+      function loadImages(slug, name) {
+        const found = [];
+        let probed = 0;
+
+        for (let i = 1; i <= MAX_IMAGES; i++) {
+          const src = imgPath(slug, i);
+          const img = new Image();
+
+          img.onload = function () {
+            found.push({ index: i, src: src });
+            probed++;
+            if (probed === MAX_IMAGES) renderGrid(found, name);
+          };
+
+          img.onerror = function () {
+            probed++;
+            if (probed === MAX_IMAGES) renderGrid(found, name);
+          };
+
+          img.src = src;
+        }
+      }
+
+      // ── RENDER GRID ──
+      function renderGrid(found, name) {
+        // Sort by number so they always appear in order
+        found.sort((a, b) => a.index - b.index);
+        currentImages = found.map(f => f.src);
+
+        if (currentImages.length === 0) {
+          modalBody.innerHTML = `
+        <div class="svc-coming-soon">
+          <i class="fas fa-images"></i>
+          <h3>Coming Soon</h3>
+          <p>We're preparing sample images for <strong style="color:#fff;">${name}</strong>. Check back soon!</p>
+        </div>`;
+          return;
+        }
+
+        const grid = document.createElement('div');
+        grid.className = 'svc-img-grid';
+
+        currentImages.forEach((src, idx) => {
+          const thumb = document.createElement('div');
+          thumb.className = 'svc-img-thumb';
+          thumb.setAttribute('role', 'button');
+          thumb.setAttribute('tabindex', '0');
+          thumb.setAttribute('aria-label', `View ${name} sample ${idx + 1}`);
+
+          const img = document.createElement('img');
+          img.src = src;
+          img.alt = `${name} sample ${idx + 1}`;
+          img.loading = 'lazy';
+
+          thumb.appendChild(img);
+          thumb.addEventListener('click', () => openLightbox(idx));
+          thumb.addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === ' ') openLightbox(idx); });
+          grid.appendChild(thumb);
+        });
+
+        modalBody.innerHTML = '';
+        modalBody.appendChild(grid);
+      }
+
+      // ── CLOSE MODAL ──
+      function closeModal() {
+        modal.classList.remove('open');
+        document.body.style.overflow = '';
+        currentImages = [];
+      }
+
+      // ── LIGHTBOX ──
+      function openLightbox(idx) {
+        currentIndex = idx;
+        showLbImage();
+        lightbox.classList.add('open');
+      }
+
+      function closeLightbox() {
+        lightbox.classList.remove('open');
+      }
+
+      function showLbImage() {
+        lbImg.style.opacity = '0';
+        setTimeout(() => {
+          lbImg.src = currentImages[currentIndex];
+          lbImg.alt = 'Print sample ' + (currentIndex + 1);
+          lbCounter.textContent = (currentIndex + 1) + ' / ' + currentImages.length;
+          lbImg.style.opacity = '1';
+          lbImg.style.transition = 'opacity 0.25s';
+        }, 120);
+      }
+
+      function lbGo(dir) {
+        currentIndex = (currentIndex + dir + currentImages.length) % currentImages.length;
+        showLbImage();
+      }
+
+      // ── EVENT LISTENERS ──
+
+      // Service cards — click to open
+      document.querySelectorAll('.svc-item').forEach(card => {
+        const name = card.querySelector('.svc-name').textContent.trim();
+        if (name === '& Much More!') return;
+        card.style.cursor = 'pointer';
+        card.addEventListener('click', () => openModal(card));
+      });
+
+      // Modal close
+      modalClose.addEventListener('click', closeModal);
+      modal.addEventListener('click', e => { if (e.target === modal) closeModal(); });
+
+      // Lightbox controls
+      lbClose.addEventListener('click', closeLightbox);
+      lbPrev.addEventListener('click', () => lbGo(-1));
+      lbNext.addEventListener('click', () => lbGo(1));
+
+      // Click outside lightbox image = close
+      lightbox.addEventListener('click', e => {
+        if (e.target === lightbox) closeLightbox();
+      });
+
+      // Keyboard
+      document.addEventListener('keydown', e => {
+        if (e.key === 'Escape') {
+          if (lightbox.classList.contains('open')) { closeLightbox(); return; }
+          if (modal.classList.contains('open')) { closeModal(); return; }
+        }
+        if (lightbox.classList.contains('open')) {
+          if (e.key === 'ArrowLeft') lbGo(-1);
+          if (e.key === 'ArrowRight') lbGo(1);
+        }
+      });
+
+      // Swipe support for mobile lightbox
+      let touchStartX = 0;
+      lightbox.addEventListener('touchstart', e => { touchStartX = e.changedTouches[0].screenX; }, { passive: true });
+      lightbox.addEventListener('touchend', e => {
+        const diff = touchStartX - e.changedTouches[0].screenX;
+        if (Math.abs(diff) > 50) lbGo(diff > 0 ? 1 : -1);
+      });
+
+    })();
+
     (function () { emailjs.init("vCKSc3VokDoZUjDKd"); })();
 
     window.addEventListener('load', function () {
