@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Page Not Found – HI-TEC Printing Solutions</title>
+  <meta name="description" content="The page you're looking for doesn't exist. Return to HI-TEC Printing Solutions – Vijayawada's premier digital printing shop." />
+  <meta name="robots" content="noindex, follow" />
+  <link rel="icon" type="image/png" href="images/hitec_rounded.webp">
+  <link rel="shortcut icon" href="images/hitec_favicon_rounded.ico" type="image/x-icon">
+  <link rel="apple-touch-icon" href="images/hitec_rounded.webp" />
+  <meta name="theme-color" content="#e63b1f">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@900&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600&display=swap&font-display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+
+  <style>
+    :root {
+      --paper: #f8f5f0;
+      --paper2: #f2ede6;
+      --ink: #0f0e0d;
+      --ink2: #1a1917;
+      --ink-light: #666660;
+      --accent: #e63b1f;
+      --accent2: #c43218;
+      --gold: #c9952a;
+      --muted: #7a7570;
+      --card: #ffffff;
+      --border: #e8e3dc;
+      --ff-serif: 'Playfair Display', Georgia, serif;
+      --ff-sans: 'DM Sans', system-ui, sans-serif;
+      --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { font-size: 16px; }
+    body {
+      background: var(--paper);
+      color: var(--ink);
+      font-family: var(--ff-sans);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      overflow-x: hidden;
+    }
+    a { text-decoration: none; color: inherit; }
+
+    /* ── NAVBAR ── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      background: rgba(248, 245, 240, 0.95);
+      backdrop-filter: blur(16px);
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 5vw;
+      height: 68px;
+      box-shadow: 0 4px 24px rgba(0,0,0,0.06);
+    }
+
+    .nav-logo {
+      font-family: var(--ff-serif);
+      font-weight: 900;
+      font-size: 1.3rem;
+      color: var(--ink);
+      letter-spacing: -0.02em;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .nav-logo img {
+      width: 34px; height: 34px;
+      border-radius: 50%;
+      object-fit: cover;
+    }
+
+    .logo-text { display: flex; flex-direction: column; line-height: 1.1; }
+    .logo-text strong { font-weight: 900; font-size: 1.3rem; color: var(--ink); letter-spacing: -0.02em; }
+    .logo-sub { font-size: 0.7rem; font-weight: 500; color: var(--ink-light); letter-spacing: 0.05em; margin-top: 1px; }
+
+    .nav-home {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: var(--accent);
+      color: #fff;
+      padding: 0.5rem 1.4rem;
+      border-radius: 4px;
+      font-size: 0.88rem;
+      font-weight: 600;
+      transition: background 0.2s, transform 0.2s;
+    }
+    .nav-home:hover { background: var(--accent2); transform: translateY(-1px); }
+
+    /* ── MAIN ── */
+    main {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 100px 5vw 60px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    /* Ghost number */
+    .ghost-404 {
+      position: absolute;
+      font-family: var(--ff-serif);
+      font-size: clamp(160px, 28vw, 340px);
+      font-weight: 900;
+      color: rgba(0,0,0,0.032);
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      line-height: 1;
+      pointer-events: none;
+      user-select: none;
+      white-space: nowrap;
+      letter-spacing: -0.04em;
+      overflow: hidden;
+      max-width: 100%;
+    }
+
+    .content {
+      position: relative;
+      z-index: 1;
+      text-align: center;
+      max-width: 580px;
+      animation: fadeUp 0.7s 0.1s var(--ease-out) both;
+    }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(28px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* Logo */
+    .err-logo {
+      width: 72px; height: 72px;
+      border-radius: 50%;
+      object-fit: cover;
+      margin: 0 auto 1.5rem;
+      border: 3px solid var(--border);
+      display: block;
+      animation: fadeUp 0.6s 0.05s var(--ease-out) both;
+    }
+
+    /* Eyebrow */
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: var(--accent);
+      color: #fff;
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      padding: 0.38rem 0.9rem;
+      border-radius: 3px;
+      margin-bottom: 1.5rem;
+      animation: fadeUp 0.6s 0.15s var(--ease-out) both;
+    }
+
+    .eyebrow::before { content: '●'; font-size: 0.45rem; }
+
+    h1 {
+      font-family: var(--ff-serif);
+      font-size: clamp(2rem, 5vw, 3.2rem);
+      font-weight: 900;
+      line-height: 1.08;
+      letter-spacing: -0.025em;
+      margin-bottom: 1rem;
+      animation: fadeUp 0.7s 0.2s var(--ease-out) both;
+    }
+
+    h1 em { color: var(--accent); font-style: normal; }
+
+    .sub {
+      font-size: 1.05rem;
+      color: var(--muted);
+      line-height: 1.75;
+      margin-bottom: 2.5rem;
+      animation: fadeUp 0.7s 0.3s var(--ease-out) both;
+    }
+
+    /* Buttons */
+    .btns {
+      display: flex;
+      gap: 0.85rem;
+      flex-wrap: wrap;
+      justify-content: center;
+      margin-bottom: 2.5rem;
+      animation: fadeUp 0.7s 0.4s var(--ease-out) both;
+    }
+
+    .btn-primary {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: var(--accent);
+      color: #fff;
+      padding: 0.85rem 1.75rem;
+      border-radius: 4px;
+      font-size: 0.95rem;
+      font-weight: 600;
+      transition: background 0.2s, transform 0.2s, box-shadow 0.2s;
+    }
+    .btn-primary:hover {
+      background: var(--accent2);
+      transform: translateY(-2px);
+      box-shadow: 0 10px 28px rgba(230,59,31,0.3);
+    }
+
+    .btn-outline {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      border: 2px solid var(--ink2);
+      color: var(--ink);
+      padding: 0.82rem 1.75rem;
+      border-radius: 4px;
+      font-size: 0.95rem;
+      font-weight: 600;
+      transition: all 0.2s;
+    }
+    .btn-outline:hover { background: var(--ink2); color: var(--paper); }
+
+    .btn-wa {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: #25D366;
+      color: #fff;
+      padding: 0.85rem 1.75rem;
+      border-radius: 4px;
+      font-size: 0.95rem;
+      font-weight: 600;
+      transition: all 0.2s;
+    }
+    .btn-wa:hover {
+      background: #1da851;
+      transform: translateY(-2px);
+      box-shadow: 0 10px 28px rgba(37,211,102,0.3);
+    }
+
+    /* Divider */
+    .divider {
+      height: 1px;
+      background: var(--border);
+      margin: 0 auto 2rem;
+      max-width: 280px;
+      animation: fadeUp 0.7s 0.45s var(--ease-out) both;
+    }
+
+    /* Quick links */
+    .quick-links {
+      display: flex;
+      gap: 0.6rem;
+      flex-wrap: wrap;
+      justify-content: center;
+      animation: fadeUp 0.7s 0.5s var(--ease-out) both;
+    }
+
+    .qlink {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 0.45rem 0.9rem;
+      font-size: 0.82rem;
+      font-weight: 500;
+      color: var(--muted);
+      transition: all 0.22s;
+    }
+    .qlink i { color: var(--accent); font-size: 0.8rem; }
+    .qlink:hover { border-color: var(--accent); color: var(--ink); transform: translateY(-2px); box-shadow: 0 4px 14px rgba(0,0,0,0.07); }
+
+    /* ── FOOTER ── */
+    footer {
+      background: var(--ink);
+      border-top: 1px solid rgba(255,255,255,0.06);
+      padding: 28px 5vw;
+    }
+
+    .footer-inner {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 1rem;
+      max-width: 1360px;
+      margin: 0 auto;
+    }
+
+    .footer-logo { font-family: var(--ff-serif); font-size: 1.1rem; font-weight: 900; color: #fff; }
+    .footer-logo em { color: var(--accent); font-style: normal; }
+    .footer-copy { font-size: 0.8rem; color: rgba(255,255,255,0.3); margin-top: 3px; }
+
+    .social-row { display: flex; gap: 10px; }
+    .soc-link {
+      width: 36px; height: 36px;
+      border-radius: 50%;
+      border: 1px solid rgba(255,255,255,0.1);
+      display: flex; align-items: center; justify-content: center;
+      color: rgba(255,255,255,0.45);
+      font-size: 0.85rem;
+      transition: all 0.22s;
+    }
+    .soc-link:hover { border-color: var(--accent); color: var(--accent); transform: translateY(-2px); }
+
+    /* ── WA FLOAT ── */
+    .wa-float {
+      position: fixed;
+      bottom: 24px; right: 24px;
+      width: 56px; height: 56px;
+      border-radius: 50%;
+      background: #25D366;
+      color: #fff;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.6rem;
+      box-shadow: 0 4px 20px rgba(37,211,102,0.4);
+      z-index: 1000;
+      transition: transform 0.3s var(--ease-out), box-shadow 0.3s;
+    }
+    .wa-float:hover { transform: scale(1.1) translateY(-2px); box-shadow: 0 8px 30px rgba(37,211,102,0.5); color: #fff; }
+    .wa-float::before {
+      content: '';
+      position: absolute; inset: -5px;
+      border-radius: 50%;
+      border: 2px solid rgba(37,211,102,0.35);
+      animation: waRing 2s ease-out infinite;
+    }
+    @keyframes waRing {
+      0% { transform: scale(1); opacity: 0.7; }
+      100% { transform: scale(1.55); opacity: 0; }
+    }
+
+    @media (max-width: 560px) {
+      .btns { flex-direction: column; align-items: center; }
+      .btn-primary, .btn-outline, .btn-wa { width: 100%; justify-content: center; }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- NAVBAR -->
+  <nav>
+    <a href="/" class="nav-logo" aria-label="HI-TEC Printing Solutions - Go to homepage">
+      <img src="images/hitec_rounded.webp" alt="HI-TEC Logo" width="1024" height="1024" fetchpriority="high">
+      <div class="logo-text">
+        <strong>HI-TEC</strong>
+        <div class="logo-sub">Printing Solutions</div>
+      </div>
+    </a>
+    <a href="/" class="nav-home"><i class="fas fa-home"></i> Go Home</a>
+  </nav>
+
+  <!-- MAIN -->
+  <main>
+    <div class="ghost-404" aria-hidden="true">404</div>
+
+    <div class="content">
+      <img src="images/hitec_rounded.webp" alt="HI-TEC Printing Solutions" class="err-logo" width="1024" height="1024">
+      <div class="eyebrow">404 — Page Not Found</div>
+      <h1>Oops! This page seems<br>to have gone <em>missing.</em></h1>
+      <p class="sub">Don't worry — we've got plenty of great prints waiting for you.<br>Head back and let's get your order rolling.</p>
+
+      <div class="btns">
+        <a href="/" class="btn-primary"><i class="fas fa-home"></i> Go to Homepage</a>
+        <a href="/#services" class="btn-outline"><i class="fas fa-print"></i> View Services</a>
+        <a href="https://wa.me/919848179981" class="btn-wa" target="_blank" rel="noopener noreferrer"><i class="fab fa-whatsapp"></i> WhatsApp Us</a>
+      </div>
+
+      <div class="divider"></div>
+
+      <div class="quick-links">
+        <a href="/#about" class="qlink"><i class="fas fa-info-circle"></i> About Us</a>
+        <a href="/#portfolio" class="qlink"><i class="fas fa-images"></i> Portfolio</a>
+        <a href="/#testimonials" class="qlink"><i class="fas fa-star"></i> Reviews</a>
+        <a href="/#contact" class="qlink"><i class="fas fa-envelope"></i> Contact</a>
+        <a href="tel:+919848179981" class="qlink"><i class="fas fa-phone-alt"></i> Call Us</a>
+      </div>
+    </div>
+  </main>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-inner">
+      <div>
+        <div class="footer-logo">HI-TEC</div>
+        <div class="footer-copy">© <span id="yr"></span> HI-TEC Printing Solutions. All rights reserved.</div>
+      </div>
+      <div class="social-row">
+        <a class="soc-link" href="https://www.facebook.com/HitecPrintingSolutions" target="_blank" rel="noopener noreferrer" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+        <a class="soc-link" href="https://www.instagram.com/hitec_printing_solutions/" target="_blank" rel="noopener noreferrer" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+        <a class="soc-link" href="https://wa.me/919848179981" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+        <a class="soc-link" href="https://g.page/r/CWGhGEUveUgfEB0/review" target="_blank" rel="noopener noreferrer" aria-label="Review"><i class="fas fa-star"></i></a>
+      </div>
+    </div>
+  </footer>
+
+  <a href="https://wa.me/919848179981" class="wa-float" target="_blank" rel="noopener noreferrer" aria-label="Chat on WhatsApp"><i class="fab fa-whatsapp"></i></a>
+
+  <script>
+    document.getElementById('yr').textContent = new Date().getFullYear();
+  </script>
+
+</body>
+</html>
